@@ -31,7 +31,7 @@ gulp.task('script', gulp.series(() => {
 gulp.task('image', gulp.series(() => {
     return gulp.src('./src/images/*')
         .pipe(imagemin())
-        .pipe(gulp.dest('./assets/images'));
+        .pipe(gulp.dest('./assets/img'));
 }));
 
 gulp.task('watch', function() {
