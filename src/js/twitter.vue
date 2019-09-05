@@ -5,7 +5,7 @@
                 <img src="img/icon_baseball.svg" alt="Cover">
             </div>
             <div class="cd-timeline__content text-component">
-                <component-view :id="tweet.id">
+                <component-view :id="tweet.id" error-message="ツイートが読み込めませんでした">
                     <div class="spinner"></div>
                 </component-view>
                 <div class="flex justify-between items-center">
