@@ -1,8 +1,8 @@
 <template>
     <div class="container max-width-lg cd-timeline__container">
         <div class="cd-timeline__block" v-for="tweet in tweets" :key="tweet.id">
-            <div class="cd-timeline__img cd-timeline__img--picture">
-                <img src="assets/img/icon_baseball.svg" alt="Cover">
+            <div class="cd-timeline__img cd-timeline__img--movie">
+                <img src="img/icon_baseball.svg" alt="Cover">
             </div>
             <div class="cd-timeline__content text-component">
                 <component-view :id="tweet.id">

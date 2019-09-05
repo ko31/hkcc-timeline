@@ -16,7 +16,7 @@ gulp.task('style', gulp.series(() => {
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss([autoprefixer({ cascade: false })]))
-        .pipe(concat('style.min.css'))
+        .pipe(concat('bundle.min.css'))
         .pipe(minifyCSS())
         .pipe(csso())
         .pipe(sourcemaps.write())
@@ -34,10 +34,16 @@ gulp.task('image', gulp.series(() => {
         .pipe(gulp.dest('./dist/img'));
 }));
 
-gulp.task('watch', function() {
+gulp.task('copy', () => {
+    return gulp.src('./assets/**/*.*', {base: './assets/'}).pipe(gulp.dest("./dist"));
+    return gulp.src('./index.html').pipe(gulp.dest("./dist"));
+    return gulp.src('./tweets.json').pipe(gulp.dest("./dist"));
+});
+
+gulp.task('watch', () => {
     gulp.watch('./src/sass/**/*.scss', gulp.task(['style']));
     gulp.watch('./src/js/**/*.*', gulp.task(['script']));
     gulp.watch('./src/images/**/*.*', gulp.task(['image']));
 });
 
-gulp.task('default', gulp.series(gulp.parallel('style', 'script', 'image', 'watch')));
+gulp.task('default', gulp.series(gulp.parallel('style', 'script', 'image'), 'watch'));
