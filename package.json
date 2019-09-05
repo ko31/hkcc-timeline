@@ -1,7 +1,7 @@
 {
   "name": "hkcc-timeline",
   "version": "1.0.0",
-  "description": "報知高校野球カバーコレクションタイムライン",
+  "description": "Hochi Kokoyakyu Cover Collection Timeline",
   "main": "index.js",
   "scripts": {
     "build": "gulp",
