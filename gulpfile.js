@@ -20,23 +20,23 @@ gulp.task('style', gulp.series(() => {
         .pipe(minifyCSS())
         .pipe(csso())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./assets/css'));
+        .pipe(gulp.dest('./dist/css'));
 }));
 
 gulp.task('script', gulp.series(() => {
     return webpackStream(webpackConfig, webpack)
-        .pipe(gulp.dest('./assets/js'));
+        .pipe(gulp.dest('./dist/js'));
 }));
 
 gulp.task('image', gulp.series(() => {
     return gulp.src('./src/images/*')
         .pipe(imagemin())
-        .pipe(gulp.dest('./assets/img'));
+        .pipe(gulp.dest('./dist/img'));
 }));
 
 gulp.task('watch', function() {
     gulp.watch('./src/sass/**/*.scss', gulp.task(['style']));
-    gulp.watch('./src/js/**/*.js', gulp.task(['script']));
+    gulp.watch('./src/js/**/*.*', gulp.task(['script']));
     gulp.watch('./src/images/**/*.*', gulp.task(['image']));
 });
 

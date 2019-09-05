@@ -1,1 +1,21 @@
-// todo something
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 5px solid #ccc;
+  border-right: 5px solid transparent;
+  border-radius: 30px;
+  animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+  }
+  50% {
+    opacity: .6;
+  }
+  100% {
+    transform: rotate(360deg);
+    transform-origin: 50% 50%;
+    opacity: .3;
+  }
+}
