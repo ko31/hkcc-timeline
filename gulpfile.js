@@ -34,9 +34,15 @@ gulp.task('image', gulp.series(() => {
         .pipe(gulp.dest('./dist/img'));
 }));
 
-gulp.task('copy', () => {
+gulp.task('copy_assets', () => {
     return gulp.src('./assets/**/*.*', {base: './assets/'}).pipe(gulp.dest("./dist"));
+});
+
+gulp.task('copy_html', () => {
     return gulp.src('./index.html').pipe(gulp.dest("./dist"));
+});
+
+gulp.task('copy_json', () => {
     return gulp.src('./tweets.json').pipe(gulp.dest("./dist"));
 });
 
@@ -45,5 +51,7 @@ gulp.task('watch', () => {
     gulp.watch('./src/js/**/*.*', gulp.task(['script']));
     gulp.watch('./src/images/**/*.*', gulp.task(['image']));
 });
+
+gulp.task('copy', gulp.series('copy_assets', 'copy_html', 'copy_json'));
 
 gulp.task('default', gulp.series(gulp.parallel('style', 'script', 'image'), 'watch'));
